@@ -3,6 +3,7 @@ package com.tokenization.tokenization.controller;
 import com.tokenization.tokenization.model.User;
 import com.tokenization.tokenization.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +30,8 @@ public class UserController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteUser(@PathVariable String id){
+    public String deleteUser(@PathVariable String id){
         userService.deleteUser(id);
+        return "Deleted user from DB";
     }
 }
